@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>599574914776-8vp15bnp1sngbee8l8bg4snd8m4kudbf.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.599574914776-8vp15bnp1sngbee8l8bg4snd8m4kudbf</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD3OmCvqwhXqwnfZFX5giihufHgUGc4ETU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>599574914776</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>JK.SpotFinder</string>
+	<key>PROJECT_ID</key>
+	<string>spotfinder-fd59e</string>
+	<key>STORAGE_BUCKET</key>
+	<string>spotfinder-fd59e.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:599574914776:ios:d10ae6b7e8d8fa7cbf59ad</string>
+</dict>
+</plist>

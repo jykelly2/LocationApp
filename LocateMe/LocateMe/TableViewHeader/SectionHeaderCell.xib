@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SectionHeaderCell" id="VL2-sW-tCT" customClass="SectionHeaderCell" customModule="SpotFinder" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VL2-sW-tCT" id="3qP-Q1-Ek5">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t2V-Ct-06K">
+                        <rect key="frame" x="15" y="10" width="48" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uYI-bf-cVS">
+                        <rect key="frame" x="15" y="36" width="399" height="1"/>
+                        <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="DwJ-Yo-f8K"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="t2V-Ct-06K" firstAttribute="centerY" secondItem="3qP-Q1-Ek5" secondAttribute="centerY" id="01h-Nz-c8I"/>
+                    <constraint firstItem="uYI-bf-cVS" firstAttribute="top" secondItem="t2V-Ct-06K" secondAttribute="bottom" constant="2" id="6cy-mi-zmh"/>
+                    <constraint firstItem="t2V-Ct-06K" firstAttribute="leading" secondItem="3qP-Q1-Ek5" secondAttribute="leading" constant="15" id="ZwG-XZ-yBX"/>
+                    <constraint firstAttribute="trailing" secondItem="uYI-bf-cVS" secondAttribute="trailing" id="aFh-n7-gXK"/>
+                    <constraint firstItem="uYI-bf-cVS" firstAttribute="leading" secondItem="3qP-Q1-Ek5" secondAttribute="leading" constant="15" id="hUc-fd-lWZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="SectionTitle" destination="t2V-Ct-06K" id="Z5P-y5-vQG"/>
+            </connections>
+            <point key="canvasLocation" x="11.594202898550726" y="38.839285714285715"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,15 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '10.0'
+
+target 'LocateMe' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for LocateMe
+pod 'FBSDKLoginKit'
+pod 'GoogleSignIn'
+pod 'Firebase/Auth'
+pod 'Firebase/Firestore'
+pod 'FloatingPanel'
+pod 'AnimatedField'
+end
