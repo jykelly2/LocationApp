@@ -3,11 +3,17 @@ LocationApp (Still in progress of development) allows users to search for any pl
 
 This app is innovative and unique since there is no exising application to have search ability using user's traced path. So far Apple and Google maps have only have the ability to search for places from point A to B in the navigation and are restricted within certain distance range.
 
-***
-
 ### Tools/Launguages:
 
 * Swift, Xcode, MapKit, Core Location, LocalSearch, SafariService, Firestore, Facebook/Google login
 
 ### Screenshots
 
+<div>
+<img src="https://github.com/jykelly2/LocationApp/tree/master/app-screenshots/6.5-inch Screenshot 1.jpg" height="700" width="700"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/tree/master/app-screenshots/6.5-inch Screenshot 2.jpg" height="700" width="700"alt="Initial view">
+<div>
+  
+<div>
+<img src="https://github.com/jykelly2/LocationApp/tree/master/app-screenshots/6.5-inch Screenshot 2.jpg" height="700" width="700"alt="Initial view">
+<div>
