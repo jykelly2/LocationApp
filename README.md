@@ -15,8 +15,8 @@ LocationApp (Still in progress of development) allows users to search for any pl
 
   
 <div>
-<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%208.jpg" height="650" width="300"alt="Initial view">
 <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%209.jpg" height="650" width="300"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%208.jpg" height="650" width="300"alt="Initial view">
 <div>
 
 <div>
