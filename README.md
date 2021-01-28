@@ -7,6 +7,8 @@ This app is innovative and unique since there is no exising application to have 
 
 * Swift, Xcode, MapKit, Core Location, LocalSearch, SafariService, Firestore, Facebook/Google login
 
+<img src="https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif" width="40" height="40" />
+
 ### Screenshots
 
 <div>
