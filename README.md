@@ -8,15 +8,16 @@ This app is innovative and unique since there is no exising application to have 
 * Swift, Xcode, MapKit, Core Location, LocalSearch, SafariService, Firestore, Facebook/Google login, FloatingPanel, AnimateField
 
 ### GIFs and Screenshots
-Trace Search
+
 <div>
+  Trace Search
   <img src="https://github.com/jykelly2/LocationApp/blob/master/TraceSearchStandard.gif" width="300" height="650" />
+   Menu and Saved Lists
+<img src="https://github.com/jykelly2/LocationApp/blob/master/SavedPlaceHD.gif" width="300" height="650" />
 <div>
   
- Menu and Saved Lists
-<div>
-    <img src="https://github.com/jykelly2/LocationApp/blob/master/SavedPlaceHD.gif" width="300" height="650" />
-<div>
+
+
   
 <div>
 <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%201.jpg" height="650" width="300"alt="Initial view">
