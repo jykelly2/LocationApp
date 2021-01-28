@@ -10,10 +10,10 @@ This app is innovative and unique since there is no exising application to have 
 ### Screenshots
 
 <div>
-<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%201.jpg" height="700" width="700"alt="Initial view">
-<img src="https://github.com/jykelly2/LocationApp/tree/master/app-screenshots/6.5-inch%20Screenshot%202.jpg" height="700" width="700"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%201.jpg" height="1300" width="300"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%202.jpg" height="1300" width="300"alt="Initial view">
 <div>
   
 <div>
-<img src="https://github.com/jykelly2/LocationApp/tree/master/app-screenshots/6.5-inch%20Screenshot%202.jpg" height="700" width="700"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%202.jpg" height="1000" width="300"alt="Initial view">
 <div>
