@@ -20,7 +20,7 @@ This app is innovative and unique since there is no exising application to have 
 <div>
   
 <div>
-<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%205.jpg" height="650" width="300"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%207.jpg" height="650" width="300"alt="Initial view">
 <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%206.jpg" height="650" width="300"alt="Initial view">
 <div>
   
