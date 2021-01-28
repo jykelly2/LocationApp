@@ -10,16 +10,9 @@ This app is innovative and unique since there is no exising application to have 
 ### GIFs and Screenshots
 
 | Trace Search  | Saved Lists |
-| --- | --- |
+: --- :|: --- :
 | <img src="https://github.com/jykelly2/LocationApp/blob/master/TraceSearchStandard.gif" width="300" height="650" />   |  <img src="https://github.com/jykelly2/LocationApp/blob/master/SavedPlaceHD.gif" width="300" height="650" />|
 
-
-<div>
-  <li>Trace Search<li>
-  <img src="https://github.com/jykelly2/LocationApp/blob/master/TraceSearchStandard.gif" width="300" height="650" />
-   <li>Menu and Saved Lists<li>
-<img src="https://github.com/jykelly2/LocationApp/blob/master/SavedPlaceHD.gif" width="300" height="650" />
-<div>
   
 <div>
 <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%208.jpg" height="650" width="300"alt="Initial view">
