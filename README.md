@@ -10,31 +10,30 @@ This app is innovative and unique since there is no exising application to have 
 ### GIFs and Screenshots
 
 <div>
-  Trace Search
+  <p>Trace Search<p>
   <img src="https://github.com/jykelly2/LocationApp/blob/master/TraceSearchStandard.gif" width="300" height="650" />
-   Menu and Saved Lists
+   <p>Menu and Saved Lists<p>
 <img src="https://github.com/jykelly2/LocationApp/blob/master/SavedPlaceHD.gif" width="300" height="650" />
-<div>
-  
-
-
-  
-<div>
-<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%201.jpg" height="650" width="300"alt="Initial view">
-<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%202.jpg" height="650" width="300"alt="Initial view">
-<div>
-  
-<div>
- <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%203.jpg" height="650" width="300"alt="Initial view">
-<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%204.jpg" height="650" width="300"alt="Initial view">
-<div>
-  
-<div>
- <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%207.jpg" height="650" width="300"alt="Initial view">
-<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%206.jpg" height="650" width="300"alt="Initial view">
 <div>
   
 <div>
 <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%208.jpg" height="650" width="300"alt="Initial view">
 <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%209.jpg" height="650" width="300"alt="Initial view">
 <div>
+
+<div>
+ <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%203.jpg" height="650" width="300"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%204.jpg" height="650" width="300"alt="Initial view">
+<div>
+  
+<div>
+ <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%206.jpg" height="650" width="300"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%207.jpg" height="650" width="300"alt="Initial view">
+<div>
+  
+<div>
+<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%201.jpg" height="650" width="300"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%202.jpg" height="650" width="300"alt="Initial view">
+<div>
+  
+
