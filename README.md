@@ -11,7 +11,7 @@ This app is innovative and unique since there is no exising application to have 
 
 <div>
 <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%201.jpg" height="650" width="300"alt="Initial view">
-<img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%202.jpg" height="650" width="300"alt="Initial view">
+<img src="https://github.com/jykelly2/LocationApp/blob/master/LocationApp%20Screen%20Shots/HomeScreen.jpg" height="650" width="300"alt="Initial view">
 <img src="https://github.com/jykelly2/LocationApp/blob/master/app-screenshots/6.5-inch%20Screenshot%203.jpg" height="650" width="300"alt="Initial view">
 <div>
 <div>
