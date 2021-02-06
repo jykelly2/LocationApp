@@ -27,21 +27,20 @@ class ItemCell: UICollectionViewCell {
         ItemLabel.text = itemLabel
         CategoryLabel.text = categoryLabel
         ListName.text = listLabel
-         BackView.backgroundColor = color
-
-        ItemIcon.backgroundColor = color
-        let img = itemImg.imageWithInset(insets: UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30))
-        ItemIcon.image = img.withRenderingMode(.alwaysTemplate)
+        BackView.backgroundColor = color
+        
+        ItemIcon.setUpIconImg(img: itemImg, color: color, inset: 30)
         ItemIcon.tintColor = UIColor.white
-
+        
         ItemIcon.layer.borderWidth = 2
         ItemIcon.layer.borderColor = UIColor.white.cgColor
-        ItemIcon.layer.cornerRadius = ItemIcon.frame.size.width / 2
+        //ItemIcon.layer.cornerRadius = ItemIcon.frame.size.width / 2
         
         let listIcon = self.setListIcon(title: listLabel)
         ListIcon.image = listIcon.0
         ListIcon.tintColor = listIcon.1
-
+        
+        BackView.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: ItemIcon.frame.midY)
     }
     func emptyConfigure(){
         

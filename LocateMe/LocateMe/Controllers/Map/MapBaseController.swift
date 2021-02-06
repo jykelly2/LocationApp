@@ -11,13 +11,8 @@ import MapKit
 import CoreLocation
 import FloatingPanel
 
-enum FpcType{
-    case search
-    case list
-    case place
-}
+// MARK: - Map SuperClass (Inherited by MapController and ListMapController)
 
-// MARK: - Map SuperClass (Inherited by MapController and ListController)
 class MapBaseController : UIViewController, FloatingPanelControllerDelegate{
     lazy var listDetailVC = storyboard?.instantiateViewController(withIdentifier: "ListDetailController") as! ListDetailController
     
@@ -31,7 +26,7 @@ class MapBaseController : UIViewController, FloatingPanelControllerDelegate{
     let fpc = FloatingPanelController()
     let detailFpc = FloatingPanelController()
     let infoFpc = FloatingPanelController()
-
+    
     var matchingPlaces: [Place] = []
     var list: List?
     
@@ -42,8 +37,8 @@ class MapBaseController : UIViewController, FloatingPanelControllerDelegate{
     
     var tableViewSelect: Bool = false
     
-// MARK: - MKMapView Functions
-        
+    // MARK: - MKMapView Functions
+    
     func setupMapView(fromMap: Bool) {
         myMap.delegate = self
         //setup map appearance
@@ -53,17 +48,18 @@ class MapBaseController : UIViewController, FloatingPanelControllerDelegate{
         myMap.isUserInteractionEnabled = true
         myMap.showsScale = true
         myMap.showsCompass = false
-            
+        
         view.addSubview(myMap)
         view.sendSubviewToBack(myMap)
         myMap.bounds = view.bounds
         myMap.center = view.center
+        myMap.tintColor = .teal
         //set up locationmanager properties
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
-                      
+        
         //start getting the location updates using the callback created
         if (CLLocationManager.locationServicesEnabled()){
             locationManager.startUpdatingLocation()
@@ -75,14 +71,15 @@ class MapBaseController : UIViewController, FloatingPanelControllerDelegate{
             myMap.showsUserLocation = true
             myMap.setUserTrackingMode(.followWithHeading, animated: true)
         }
-
+        
     }
-            
+    
     func setMapToInitialZoom(span: MKCoordinateSpan, location: CLLocation){
         let region = MKCoordinateRegion(center: location.coordinate, span: span)
         myMap.setRegion(region, animated: true)
         
-        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 260, right: 0)
+        let padding = traitCollection.userInterfaceIdiom == .pad ? UIEdgeInsets(top: 0, left: 425, bottom: 0, right: 0): UIEdgeInsets(top: 0, left: 0, bottom: 260, right: 0)
+        
         self.myMap.setVisibleMapRect(self.myMap.visibleMapRect, edgePadding: padding, animated: false)
     }
     
@@ -90,25 +87,25 @@ class MapBaseController : UIViewController, FloatingPanelControllerDelegate{
         var span = myMap.region.span
         span.latitudeDelta *= 0.08
         span.longitudeDelta *= 0.08
-           
+        
         let region = MKCoordinateRegion(center: coordinate, span: span)
         myMap.setRegion(region, animated: false)
-           
-        let padding = UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
+        
+        let padding = traitCollection.userInterfaceIdiom == .pad ? UIEdgeInsets(top: 0, left: 425, bottom: 0, right: 0): UIEdgeInsets(top: 0, left: 0, bottom: 150, right: 0)
         
         self.myMap.setVisibleMapRect(self.myMap.visibleMapRect, edgePadding: padding, animated: false)
         appIsModifying = true
     }
-      
+    
     func zoomToOriginal(){
         myMap.deselectAnnotation(selectedAnnotation, animated: true)
         self.myMap.setVisibleMapRect(originalMapRect ?? myMap.visibleMapRect, animated: false)
     }
-       
+    
     func getSamePlace(coordinate: CLLocationCoordinate2D) -> Place?{
         return matchingPlaces.first(where: {$0.coordinate == coordinate})
     }
-       
+    
     func addAnotation(place: Place){
         let myAnnotation = MKPointAnnotation()
         myAnnotation.coordinate = place.coordinate
@@ -116,24 +113,24 @@ class MapBaseController : UIViewController, FloatingPanelControllerDelegate{
         myAnnotation.subtitle = place.category
         self.myMap.addAnnotation(myAnnotation)
     }
-       
+    
     func animateAnnotation(coordinate: CLLocationCoordinate2D){
         let selectedAnnotation = myMap.annotations.first(where: {$0.coordinate == coordinate})
-           
+        
         self.selectedAnnotation = selectedAnnotation
         myMap.selectAnnotation(selectedAnnotation!, animated: true)
         tableViewSelect = false
-          
+        
         zoomInToCordinate(coordinate: coordinate)
     }
-
-// MARK: - FloatingPanel Functions
+    
+    // MARK: - FloatingPanel Functions
     
     func layoutPanelForPad(fpc: FloatingPanelController) {
         fpc.behavior = SearchPaneliPadBehavior()
         view.addSubview(fpc.view)
         addChild(fpc)
-            
+        
         fpc.view.frame = view.bounds // Needed for a correct safe area configuration
         fpc.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -148,7 +145,7 @@ class MapBaseController : UIViewController, FloatingPanelControllerDelegate{
         }
         fpc.setAppearanceForPad()
     }
-
+    
     func layoutPanelForPhone(fpc: FloatingPanelController, type: FpcType) {
         switch type {
         case .search:
@@ -158,12 +155,12 @@ class MapBaseController : UIViewController, FloatingPanelControllerDelegate{
         default:
             fpc.layout  = PlaceDetailPanelLayout()
         }
-            
+        
         fpc.surfaceView.grabberHandle.isHidden = type == FpcType.list ? true : false
         fpc.addPanel(toParent: self, animated: true)
         fpc.setAppearanceForPhone()
     }
-      
+    
 }
 
 

@@ -17,15 +17,15 @@ protocol CheckBoxDelegate: class {
 }
 
 class ListCell: UITableViewCell {
-
+    
     var delegate: EditListDelegate?
     var checkBoxdelegate: CheckBoxDelegate?
-
+    
     @IBOutlet weak var EditBtn: UIButton!
     @IBOutlet weak var CheckBox: CheckBox!
     
     @IBAction func buttonTapped(_ sender: UIButton) {
-           delegate?.didTapEdit(sender.tag)
+        delegate?.didTapEdit(sender.tag)
     }
     @IBOutlet weak var ListIcon: UIImageView!
     

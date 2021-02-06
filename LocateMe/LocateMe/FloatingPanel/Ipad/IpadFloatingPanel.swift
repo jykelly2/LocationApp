@@ -11,22 +11,22 @@ import FloatingPanel
 // MARK: - Floating Panel Pad Delegate
 
 class SearchPanelPadDelegate: NSObject, FloatingPanelControllerDelegate, UIGestureRecognizerDelegate {
-     unowned let mapOwner: MapController?
-     //unowned let listOwner: ListController?
-     var fpcType: FpcType?
+    unowned let mapOwner: MapController?
+    //unowned let listOwner: ListMapController?
+    var fpcType: FpcType?
     
     init(mapOwner: MapController?, fpcType: FpcType?) {
         self.mapOwner = mapOwner
         self.fpcType = fpcType
     }
-
+    
     func floatingPanel(_ fpc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout {
-
+        
         if newCollection.horizontalSizeClass == .compact {
             fpc.surfaceView.containerMargins = .zero
             return FloatingPanelBottomLayout()
         }
-
+        
         fpc.surfaceView.containerMargins = UIEdgeInsets(top: .leastNonzeroMagnitude,left: 16,bottom: 0.0,right: 0.0)
         switch fpcType {
         case .search:
@@ -34,21 +34,21 @@ class SearchPanelPadDelegate: NSObject, FloatingPanelControllerDelegate, UIGestu
         case .list:
             return ListPanelPadLayout()
         default:
-             return PlacePanelPadLayout()
+            return PlacePanelPadLayout()
         }
     }
-
+    
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return false
     }
-
+    
     func floatingPanelWillBeginDragging(_ vc: FloatingPanelController) {
         if vc.state == .full && mapOwner != nil{
             mapOwner?.searchVC.searchBar.showsCancelButton = false
             mapOwner?.searchVC.searchBar.resignFirstResponder()
         }
     }
-
+    
     func floatingPanelWillEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetState: UnsafeMutablePointer<FloatingPanelState>) {
         if targetState.pointee != .full && mapOwner != nil {
             mapOwner?.searchVC.hideHeader(animated: true)
@@ -83,12 +83,12 @@ class SearchPanelPadLayout: FloatingPanelLayout {
 class ListPanelPadLayout: FloatingPanelLayout {
     let position: FloatingPanelPosition  = .top
     let initialState: FloatingPanelState = .full
-     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
-           return [
-               .tip: FloatingPanelLayoutAnchor(absoluteInset: 105.0, edge: .top, referenceGuide: .safeArea),
-               .half: FloatingPanelLayoutAnchor(absoluteInset: 280.0, edge: .top, referenceGuide: .superview),
-               .full: FloatingPanelLayoutAnchor(absoluteInset: 60.0, edge: .bottom, referenceGuide: .superview),
-           ]
+    var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
+        return [
+            .tip: FloatingPanelLayoutAnchor(absoluteInset: 105.0, edge: .top, referenceGuide: .safeArea),
+            .half: FloatingPanelLayoutAnchor(absoluteInset: 280.0, edge: .top, referenceGuide: .superview),
+            .full: FloatingPanelLayoutAnchor(absoluteInset: 60.0, edge: .bottom, referenceGuide: .superview),
+        ]
     }
     func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
         return 0.0
@@ -104,12 +104,12 @@ class ListPanelPadLayout: FloatingPanelLayout {
 class PlacePanelPadLayout: FloatingPanelLayout {
     let position: FloatingPanelPosition  = .top
     let initialState: FloatingPanelState = .full
-     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
-           return [
-               .tip: FloatingPanelLayoutAnchor(absoluteInset: 155.0, edge: .top, referenceGuide: .safeArea),
-               .half: FloatingPanelLayoutAnchor(absoluteInset: 255.0, edge: .top, referenceGuide: .superview),
-               .full: FloatingPanelLayoutAnchor(absoluteInset: 60.0, edge: .bottom, referenceGuide: .superview),
-           ]
+    var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
+        return [
+            .tip: FloatingPanelLayoutAnchor(absoluteInset: 155.0, edge: .top, referenceGuide: .safeArea),
+            .half: FloatingPanelLayoutAnchor(absoluteInset: 255.0, edge: .top, referenceGuide: .superview),
+            .full: FloatingPanelLayoutAnchor(absoluteInset: 60.0, edge: .bottom, referenceGuide: .superview),
+        ]
     }
     func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
         return 0.0

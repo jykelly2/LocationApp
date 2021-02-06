@@ -24,21 +24,21 @@ class Place {
     var list : [String]
     var icon : UIImage
     var color: UIColor
-        
+    
     init(name: String, address: String , phone: String, website: URL, category: String, coordinate: CLLocationCoordinate2D, time: String, distance: Double, id: Int, dbId: String, list: [String], icon: UIImage, color: UIColor){
-                    self.name = name
-                    self.address = address
-                    self.phone = phone
-                    self.website = website
-                    self.category = category
-                    self.coordinate = coordinate
-                    self.time = time
-                    self.distance = distance
-                    self.id = id
-                    self.dbId = dbId
-                    self.list = list
-                    self.icon = icon
-                    self.color = color
+        self.name = name
+        self.address = address
+        self.phone = phone
+        self.website = website
+        self.category = category
+        self.coordinate = coordinate
+        self.time = time
+        self.distance = distance
+        self.id = id
+        self.dbId = dbId
+        self.list = list
+        self.icon = icon
+        self.color = color
     }
     
     convenience init(name: String, address: String , phone: String, website: URL, category: String, coordinate: CLLocationCoordinate2D, time: String, distance: Double, dbId: String) {

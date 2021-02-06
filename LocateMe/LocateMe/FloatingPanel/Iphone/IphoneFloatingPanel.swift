@@ -12,9 +12,9 @@ import FloatingPanel
 
 class SearchPanelPhoneDelegate: NSObject, FloatingPanelControllerDelegate, UIGestureRecognizerDelegate {
     unowned let mapOwner: MapController?
-    unowned let listOwner: ListController?
+    unowned let listOwner: ListMapController?
     
-    init(mapOwner: MapController?, listOwner: ListController?) {
+    init(mapOwner: MapController?, listOwner: ListMapController?) {
         self.mapOwner = mapOwner
         self.listOwner = listOwner
     }
@@ -30,11 +30,10 @@ class SearchPanelPhoneDelegate: NSObject, FloatingPanelControllerDelegate, UIGes
                 return SearchPanelLandscapeLayout()
             }
         }
-       return FloatingPanelBottomLayout()
+        return FloatingPanelBottomLayout()
     }
-
+    
     func floatingPanelDidMove(_ vc: FloatingPanelController) {
-       // debugPrint("surfaceLocation: ", vc.surfaceLocation)
         let loc = vc.surfaceLocation
 
         if vc.isAttracting == false {
@@ -42,7 +41,7 @@ class SearchPanelPhoneDelegate: NSObject, FloatingPanelControllerDelegate, UIGes
             let maxY = vc.surfaceLocation(for: .tip).y + 6.0
             vc.surfaceLocation = CGPoint(x: loc.x, y: min(max(loc.y, minY), maxY))
         }
-
+        
         let tipY = vc.surfaceLocation(for: .tip).y
         
         if loc.y > tipY - 44.0 {
@@ -55,16 +54,15 @@ class SearchPanelPhoneDelegate: NSObject, FloatingPanelControllerDelegate, UIGes
                 mapOwner?.searchVC.tableView.alpha = 1.0
             }
         }
-       // debugPrint("NearbyState : ",vc.nearbyState)
     }
-
+    
     func floatingPanelWillBeginDragging(_ vc: FloatingPanelController) {
         if vc.state == .full && mapOwner != nil{
             mapOwner?.searchVC.searchBar.showsCancelButton = false
             mapOwner?.searchVC.searchBar.resignFirstResponder()
         }
     }
-
+    
     func floatingPanelWillEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetState: UnsafeMutablePointer<FloatingPanelState>) {
         if targetState.pointee != .full && mapOwner != nil {
             mapOwner?.searchVC.hideHeader(animated: true)
@@ -73,7 +71,7 @@ class SearchPanelPhoneDelegate: NSObject, FloatingPanelControllerDelegate, UIGes
             vc.contentMode = .static
         }
     }
-
+    
     func floatingPanelDidEndAttracting(_ fpc: FloatingPanelController) {
         fpc.contentMode = .fitToBounds
     }

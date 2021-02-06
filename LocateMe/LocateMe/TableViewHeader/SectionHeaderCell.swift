@@ -9,7 +9,7 @@
 import UIKit
 
 class SectionHeaderCell: UITableViewCell {
-
+    
     @IBOutlet weak var SectionTitle: UILabel!
     
     static var nib:UINib {
@@ -19,5 +19,5 @@ class SectionHeaderCell: UITableViewCell {
     static var identifier: String {
         return String(describing: self)
     }
-
+    
 }

@@ -27,9 +27,9 @@ class SearchController: UIViewController, UITableViewDataSource {
     
     var lists: [List] = []
     var searches: [Search] = []
-  
+    
     let traceHeaderView = TableHeaderView()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
@@ -41,17 +41,16 @@ class SearchController: UIViewController, UITableViewDataSource {
         searchBar.setSearchText(fontSize: 15.0)
     }
     
-        
-// MARK: - Search panel header transition
-   
+    // MARK: - Search panel header transition
+    
     func showHeader(animated: Bool) {
         changeHeader(height: 116.0, animated: animated)
     }
-
+    
     func hideHeader(animated: Bool) {
         changeHeader(height: 0.0, animated: animated)
     }
-
+    
     private func changeHeader(height: CGFloat, animated: Bool) {
         if animated == false {
             updateHeader(height: height)
@@ -63,10 +62,10 @@ class SearchController: UIViewController, UITableViewDataSource {
         }
         tableView.endUpdates()
     }
-
+    
     private func updateHeader(height: CGFloat) {
         guard let headerView = tableView.tableHeaderView else { return }
-          
+        
         var frame = headerView.frame
         if height == 0.0 {
             SearchStack.isHidden = true
@@ -80,8 +79,8 @@ class SearchController: UIViewController, UITableViewDataSource {
             headerView.frame = frame
         }
     }
-        
-// MARK: - Tableview Functions (Datasource)
+    
+    // MARK: - Tableview Functions (Datasource)
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
@@ -94,14 +93,14 @@ class SearchController: UIViewController, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         var cell = UITableViewCell()
         let row = indexPath.row
-   
+        
         if  indexPath.section == 0 {
             cell = tableView.dequeueReusableCell(withIdentifier: "RecentSearchCell", for: indexPath)
-             if let cell = cell as? RecentSearchCell {
+            if let cell = cell as? RecentSearchCell {
                 cell.searchTitle.text = searches[row].title
             }
         }
@@ -114,8 +113,6 @@ class SearchController: UIViewController, UITableViewDataSource {
         }
         return cell
     }
-
-   
 }
 
 class SearchHeaderView: UIView {
@@ -152,35 +149,35 @@ extension MapController: UISearchBarDelegate {
         searchBar.showsCancelButton  = false
         searchVC.hideHeader(animated: true)
     }
-
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         deactivate(searchBar: searchBar)
         UIView.animate(withDuration: 0.25) {
             self.fpc.move(to: .half, animated: false)
         }
     }
-
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         activate(searchBar: searchBar)
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.fpc.move(to: .full, animated: false)
         }
     }
- 
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar){
         if let searchText = searchBar.text {
-                 if searchText != ""{
-                    UIView.animate(withDuration: 0.25) { [weak self] in
-                        self?.fpc.move(to: .half, animated: false)
-                    }
-                    deactivate(searchBar: searchBar)
-                     self.searchText = searchText
-                     self.searchItems()
-                    
-                 }else{
-                     myMap.removeAnnotations(myMap.annotations)
-                 }
-             }
+            if searchText != ""{
+                UIView.animate(withDuration: 0.25) { [weak self] in
+                    self?.fpc.move(to: .half, animated: false)
+                }
+                deactivate(searchBar: searchBar)
+                self.searchText = searchText
+                self.searchItems()
+                
+            }else{
+                myMap.removeAnnotations(myMap.annotations)
+            }
+        }
     }
     
     func addSearchToDb(){
@@ -188,9 +185,9 @@ extension MapController: UISearchBarDelegate {
             if !self.searchVC.searches.contains(where: {$0.title == self.searchText}) && self.userId != ""{
                 let searchesCount = self.searchVC.searches.count
                 let id = searchesCount > 0 && self.searchVC.searches.map({$0.id}).max() != nil ? self.searchVC.searches.map({$0.id}).max()! + 1 : 1
-                              
+                
                 self.searchDbController.addSearch(userId: self.userId, searchTitle: self.searchText, id: id)
-                              
+                
                 if searchesCount > 2 {
                     self.searchVC.searches.removeLast()
                 }
@@ -199,6 +196,6 @@ extension MapController: UISearchBarDelegate {
             }
         }
     }
-
+    
 }
 

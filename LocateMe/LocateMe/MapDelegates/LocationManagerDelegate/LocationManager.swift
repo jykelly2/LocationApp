@@ -14,23 +14,23 @@ extension MapBaseController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("error: \(error.localizedDescription)")
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-            case .authorizedWhenInUse:
-                 locationManager.requestLocation()
-             case .authorizedAlways:
-                 break
-             case .denied:
-                 break
-             case .notDetermined:
-                 locationManager.requestWhenInUseAuthorization()
-                 locationManager.requestLocation()
-             @unknown default:
-                 break
-             }
+        case .authorizedWhenInUse:
+            locationManager.requestLocation()
+        case .authorizedAlways:
+            break
+        case .denied:
+            break
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestLocation()
+        @unknown default:
+            break
         }
-
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         print("memory warning from location")
@@ -50,18 +50,18 @@ extension MapController{
         }else{
             if coordinates.count > 0{
                 let polyline = MKPolyline(coordinates: coordinates, count: coordinates.count)
-                         
+                
                 var regionRect = polyline.boundingMapRect
-                          
-                let wPadding = regionRect.size.width * 0.25
-                let hPadding = regionRect.size.height + 270
-
+                
+                let wPadding = traitCollection.userInterfaceIdiom == .pad ? regionRect.size.width + 385 :regionRect.size.width * 0.25
+                let hPadding = traitCollection.userInterfaceIdiom == .pad ? regionRect.size.height * 0.25 : regionRect.size.height + 270
+                
                 regionRect.origin.x -= wPadding / 2
                 
                 //Add padding to the region
                 regionRect.size.width += wPadding
                 regionRect.size.height += hPadding
-
+                
                 myMap.setRegion(MKCoordinateRegion(regionRect), animated: true)
                 trace = traceState.neutral
             }

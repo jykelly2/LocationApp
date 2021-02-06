@@ -15,7 +15,7 @@ import AnimatedField
 @objc(ManualSignUpController)
 
 class ManualSignUpController: AuthenticationBaseController {
-  
+    
     @IBOutlet weak var UsernameField: AnimatedField!
     @IBOutlet weak var EmailField: AnimatedField!
     @IBOutlet weak var PasswordField: AnimatedField!
@@ -29,10 +29,10 @@ class ManualSignUpController: AuthenticationBaseController {
     @IBOutlet weak var AppleBtn: UIButton!
     @IBOutlet weak var FacebookBtn: UIButton!
     @IBOutlet weak var GoogleBtn: UIButton!
-  
+    
     var signUp: Bool = true
     var valid = false
-
+    
     
     @IBAction func tappedAppleBtn(_ sender: UIButton) {
     }
@@ -48,7 +48,7 @@ class ManualSignUpController: AuthenticationBaseController {
         manual = true
         controller = self
         var title = ""
-              
+        
         if !signUp {
             UsernameField.isHidden = true
             title = "Log in"
@@ -57,9 +57,9 @@ class ManualSignUpController: AuthenticationBaseController {
             fbLoginBtn.delegate = self
             
             GIDSignIn.sharedInstance()?.presentingViewController = self
-                        
+            
             NotificationCenter.default.addObserver(self, selector: #selector(ManualSignUpController.receiveToggleAuthUINotification(_:)),
-                          name: NSNotification.Name(rawValue: "ToggleAuthUINotification"), object: nil)
+                                                   name: NSNotification.Name(rawValue: "ToggleAuthUINotification"), object: nil)
         }else{
             SignInLbl.isHidden = true
             MediaStack.isHidden = true
@@ -67,21 +67,27 @@ class ManualSignUpController: AuthenticationBaseController {
         }
         
         SubmitBtn.layer.cornerRadius = 10
-            
+        
         self.setDefaultTitleNavigationBar(navTitle: title, backText: "")
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
-
+    
     func fieldSetup(){
+        var titleFontSize: CGFloat = 16.0
+        var textFontSize: CGFloat = 18.0
+        if traitCollection.userInterfaceIdiom == .pad{
+            titleFontSize = 22.0
+            textFontSize = 24.0
+        }
         var format = AnimatedFieldFormat()
-        format.titleFont = UIFont(name: "AvenirNext-Regular", size: 16)!
-        format.textFont = UIFont(name: "AvenirNext-Regular", size: 18)!
+        format.titleFont = UIFont(name: "AvenirNext-Regular", size: titleFontSize)!
+        format.textFont = UIFont(name: "AvenirNext-Regular", size: textFontSize)!
         format.alertColor = .red
         format.alertFieldActive = false
         format.titleAlwaysVisible = true
         format.highlightColor = .teal
         format.textColor = .darkGray
-        format.alertFont = UIFont(name: "AvenirNext-Regular", size: 16)!
+        format.alertFont = UIFont(name: "AvenirNext-Regular", size: titleFontSize)!
         
         format.visibleOnImage = UIImage(systemName: "eye.slash")!
         format.visibleOffImage = UIImage(systemName: "eye.fill")!
@@ -91,14 +97,14 @@ class ManualSignUpController: AuthenticationBaseController {
         EmailField.dataSource = self
         EmailField.delegate = self
         EmailField.type = .email
-          
+        
         UsernameField.format = format
         UsernameField.placeholder = "Username"
         UsernameField.dataSource = self
         UsernameField.delegate = self
         UsernameField.lowercased = true
         UsernameField.type = AnimatedFieldType.none
-         
+        
         PasswordField.format = format
         PasswordField.placeholder = "Password"
         PasswordField.dataSource = self
@@ -108,7 +114,7 @@ class ManualSignUpController: AuthenticationBaseController {
         PasswordField.showVisibleButton = true
     }
     
-// MARK: - Manual Sign up/Sign In
+    // MARK: - Manual Sign up/Sign In
     @IBAction func tappedSubmit(_ sender: UIButton) {
         if checkIfValid(){
             if signUp{
@@ -137,22 +143,22 @@ class ManualSignUpController: AuthenticationBaseController {
         return validated
     }
     
-
-// MARK: - Google Sign In
+    
+    // MARK: - Google Sign In
     
     @IBAction func tappedGoogleBtn(_ sender: UIButton) {
-         tappedGoogles()
-     }
-       
+        tappedGoogles()
+    }
+    
     @objc func receiveToggleAuthUINotification(_ notification: NSNotification) {
         googleSignIn(notification: notification)
     }
     
-// MARK: - Facebook Sign In
+    // MARK: - Facebook Sign In
     
- @IBAction func tappedFacebookBtn(_ sender: UIButton) {
-      fbLoginBtn.sendActions(for: .touchUpInside)
-  }
+    @IBAction func tappedFacebookBtn(_ sender: UIButton) {
+        fbLoginBtn.sendActions(for: .touchUpInside)
+    }
     
 }
 

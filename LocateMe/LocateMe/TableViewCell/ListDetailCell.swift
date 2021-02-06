@@ -20,12 +20,12 @@ class ListDetailCell: UITableViewCell {
     @IBOutlet weak var PlaceCategory: UILabel!
     @IBOutlet weak var PlaceAddress: UILabel!
     @IBOutlet weak var CallBtn: UIButton!
-
+    
     @IBOutlet weak var DirectionBtn: UIButton!
     @IBOutlet weak var PlaceIcon: UIImageView!
     @IBOutlet weak var PlaceCate: UILabel!
     
-
+    
     @IBAction func tappedDirectionBtn(_ sender: UIButton) {
         directionDelegate?.didTapDirection(sender.tag)
     }
@@ -40,10 +40,10 @@ class ListDetailCell: UITableViewCell {
         CallBtn.layer.cornerRadius = CallBtn.frame.width/2
         CallBtn.layer.borderWidth = 1.5
         CallBtn.layer.borderColor = UIColor.teal.cgColor
-
+        
         DirectionBtn.layer.cornerRadius = CallBtn.frame.width/2
         DirectionBtn.layer.borderWidth = 1.5
         DirectionBtn.layer.borderColor = UIColor.teal.cgColor
     }
-
+    
 }

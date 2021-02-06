@@ -9,38 +9,38 @@
 import UIKit
 
 class SavePlaceView: UIViewController, UITableViewDelegate, UITableViewDataSource, CheckBoxDelegate {
-   
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var newList: UIButton!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
-   private let userDbController = UserDbController()
-   private let listDbController = ListDbController()
-   private let placeDbController = PlaceDbController()
+    private let userDbController = UserDbController()
+    private let listDbController = ListDbController()
+    private let placeDbController = PlaceDbController()
     
-   var userId: String = ""
-   var currentPlace: Place?
-   var alreadySavedPlace: Bool = false
+    var userId: String = ""
+    var currentPlace: Place?
+    var alreadySavedPlace: Bool = false
     
-   private var selectedLists = [Int]()
-   private var lists = [List]()
-   private var ids =  [Int]()
- 
+    private var selectedLists = [Int]()
+    private var lists = [List]()
+    private var ids =  [Int]()
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-       if userId != "" && currentPlace != nil{
+        if userId != "" && currentPlace != nil{
             retrieveLists()
             retrieveHistoryCount()
         }
-       setLargeTitleNavigationBar(navTitle: "Save to list", backText: "Map")
-       showNavigationBar(animated: true)
+        setDefaultTitleNavigationBar(navTitle: "Save to list", backText: "")
+        showNavigationBar(animated: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = 80
+        tableView.rowHeight = traitCollection.userInterfaceIdiom == .pad ?  viewAreaHeight/9.5 : viewAreaWidth/4.3
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,7 +50,7 @@ class SavePlaceView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         newList.layer.borderColor = UIColor.lightGrey.cgColor
         newList.layer.cornerRadius = safeAreaHeight/50
     }
-
+    
     func retrieveLists(){
         listDbController.getAllList(userId: self.userId){(allLists) in
             if allLists.count > 0{
@@ -68,7 +68,7 @@ class SavePlaceView: UIViewController, UITableViewDelegate, UITableViewDataSourc
     }
     
     func updateViewHeight(count: Int){
-        let tableCellHeight = (80)*CGFloat(count)
+        let tableCellHeight = (traitCollection.userInterfaceIdiom == .pad ?  viewAreaHeight/9.5 : viewAreaWidth/4.3)*CGFloat(count)
         let yPos = (view.subviews.map { $0.frame.height }).reduce(60, +)
         
         let scrollHeight = self.view.frame.height - yPos
@@ -76,13 +76,13 @@ class SavePlaceView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         
         self.tableViewHeight.constant = height
     }
-
-// MARK: - Tableview Functions
+    
+    // MARK: - Tableview Functions
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return lists.count
     }
-              
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath) as! ListCell
         
@@ -93,7 +93,7 @@ class SavePlaceView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         cell.CheckBox.isChecked = false
         
         let list = lists[indexPath.row]
-     
+        
         if alreadySavedPlace {
             if (currentPlace?.list.contains(list.title))!{
                 cell.CheckBox.isChecked = true
@@ -104,33 +104,33 @@ class SavePlaceView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         return cell
     }
     
-// MARK: - Button Actions
+    // MARK: - Button Actions
     
     @IBAction func tappedNewList(_ sender: Any) {
         let alert = UIAlertController(title: "New List", message: "Give title to the list", preferredStyle: .alert)
-
+        
         let saveAction = UIAlertAction(title: "Save", style: .default) { (action: UIAlertAction!) -> Void in
-                let input = alert.textFields![0].text
-                let icon = self.view.setListIcon(title: input!)
-                              
-                self.listDbController.addNewList(title: input!, userId: self.userId){
-                       (listId) in
-                    let list = List(title: input!, id: listId, icon: icon.0, color: icon.1, placeIds: [], count: 0)
-                    self.lists.append(list)
-                    self.lists = self.lists.sorted { $0.title.lowercased() < $1.title.lowercased() }
-                    self.selectedLists.removeAll()
-                    self.tableView.reloadData()
-                    self.updateViewHeight(count: self.lists.count)
-                }
+            let input = alert.textFields![0].text
+            let icon = self.view.setListIcon(title: input!)
+            
+            self.listDbController.addNewList(title: input!, userId: self.userId){
+                (listId) in
+                let list = List(title: input!, id: listId, icon: icon.0, color: icon.1, placeIds: [], count: 0)
+                self.lists.append(list)
+                self.lists = self.lists.sorted { $0.title.lowercased() < $1.title.lowercased() }
+                self.selectedLists.removeAll()
+                self.tableView.reloadData()
+                self.updateViewHeight(count: self.lists.count)
+            }
         }
         saveAction.isEnabled = false
-
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .default) { (action: UIAlertAction!) -> Void in}
-
+        
         alert.addTextField {
             (textFieldName: UITextField!) in textFieldName.placeholder = "Enter list title"
         }
-
+        
         // adding the notification observer here
         NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object:alert.textFields?[0], queue: OperationQueue.main) { (notification) -> Void in
             let textFieldName = alert.textFields?[0]
@@ -138,10 +138,10 @@ class SavePlaceView: UIViewController, UITableViewDelegate, UITableViewDataSourc
         }
         alert.addAction(cancelAction)
         alert.addAction(saveAction)
-
+        
         present(alert, animated: true, completion: nil)
     }
-
+    
     func didTapCheckBox(_ sender: CheckBox) {
         let row = (sender as AnyObject).tag!
         if sender.isChecked == true && !selectedLists.contains(row){
@@ -152,29 +152,28 @@ class SavePlaceView: UIViewController, UITableViewDelegate, UITableViewDataSourc
             }
         }
     }
-       
+    
     @IBAction func tappedDoneBtn(_ sender: UIBarButtonItem) {
         if selectedLists.count == 0 && !alreadySavedPlace{
             let alert = UIAlertController(title: "Select list", message: "Please select at least one list", preferredStyle: .alert)
-               
+            
             let cancelAction = UIAlertAction(title: "Ok", style: .default)
             alert.addAction(cancelAction)
             present(alert, animated: true, completion: nil)
-               
+            
         }else{
             var listTitles = [String]()
             var highestId = ids.max() ?? 0
             guard let currentPlace = currentPlace else {return}
-               
+            
             highestId = alreadySavedPlace ? currentPlace.id : highestId + 1
-               
+            
             for index in selectedLists{
                 let list = lists[index]
-                //if place doesnt contain list title yet, add
                 if !currentPlace.list.contains(list.title){
                     self.listDbController.addNewPlaceToList(place: currentPlace, userId: userId, listId: list.id, placeId: highestId)
                 }
-                   listTitles.append(list.title)
+                listTitles.append(list.title)
             }
             if !alreadySavedPlace{
                 placeDbController.addPlaceToHistory(place: currentPlace, userId: userId, listTitle: listTitles, count: highestId)
@@ -184,7 +183,7 @@ class SavePlaceView: UIViewController, UITableViewDelegate, UITableViewDataSourc
                 }else{
                     placeDbController.updatePlace(userId: userId, place: currentPlace, listTitle: listTitles)
                 }
-                   
+                
                 for place in currentPlace.list{
                     if listTitles.contains(place) == false{
                         let listId = lists.first(where: {$0.title == place})?.id

@@ -9,7 +9,7 @@
 import Foundation
 
 struct Search {
-
+    
     var title: String
     var id: Int
     

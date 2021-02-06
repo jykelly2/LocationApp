@@ -6,7 +6,7 @@
  * For abnboys in the LKCheckbox in the LKCheckbox
  * Here the permission is granted to this file with free of use anywhere in any iOS Projects.
  * Copyright © 2019 abnboys.com. All rights reserved.
-*/
+ */
 
 import UIKit
 
@@ -18,7 +18,7 @@ open class CheckBox: UIControl {
     public enum Style {
         /// ●
         case circle
-    
+        
         /// ✓
         case tick
     }
@@ -134,7 +134,7 @@ open class CheckBox: UIControl {
             switch self.style {
             case .circle:
                 self.drawCircle(frame: newRect)
-            
+                
             case .tick:
                 self.drawCheckMark(frame: newRect)
             }

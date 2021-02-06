@@ -9,25 +9,25 @@
 import UIKit
 
 class SettingCell: UITableViewCell {
-
+    
     let isPhone = UIDevice.isPhone
-       
-      let label: UILabel = {
-              let label = UILabel()
-              label.translatesAutoresizingMaskIntoConstraints = false
-              label.textAlignment = .left
-              label.minimumScaleFactor = 0.1
-              label.adjustsFontSizeToFitWidth = true
-              label.numberOfLines = 1
-               label.textColor = .lightGray
-           return label
-       }()
-   let img: UIImageView = {
-                let img = UIImageView()
-                img.translatesAutoresizingMaskIntoConstraints = false
-                img.contentMode = .scaleAspectFit
-                return img
-      }()
+    
+    let label: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .left
+        label.minimumScaleFactor = 0.1
+        label.adjustsFontSizeToFitWidth = true
+        label.numberOfLines = 1
+        label.textColor = .lightGray
+        return label
+    }()
+    let img: UIImageView = {
+        let img = UIImageView()
+        img.translatesAutoresizingMaskIntoConstraints = false
+        img.contentMode = .scaleAspectFit
+        return img
+    }()
     
     func setUpSetting(title:String, image: UIImage){
         
@@ -46,7 +46,7 @@ class SettingCell: UITableViewCell {
         img.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: safeAreaLayoutGuide.layoutFrame.width/20).isActive = true
         
         label.leadingAnchor.constraint(equalTo: img.trailingAnchor, constant: safeAreaLayoutGuide.layoutFrame.width/20).isActive = true
-       label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
     }
-
+    
 }

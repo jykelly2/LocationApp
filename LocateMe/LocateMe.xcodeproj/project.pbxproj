@@ -18,6 +18,8 @@
 		BA03829125B136AA00D2E213 /* DimmedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA03829025B136AA00D2E213 /* DimmedView.swift */; };
 		BA2308882595A6F5009D7A91 /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2308872595A6F5009D7A91 /* ItemCell.swift */; };
 		BA4B94BC25C11C6400C68D81 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4B94BB25C11C6400C68D81 /* MapView.swift */; };
+		BA4B94BF25C7C28800C68D81 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4B94BE25C7C28800C68D81 /* Enums.swift */; };
+		BA4B94C125C7CCE100C68D81 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4B94C025C7CCE100C68D81 /* SettingController.swift */; };
 		BA54174325980D7C00CD4D47 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54174225980D7C00CD4D47 /* List.swift */; };
 		BA541745259836F900CD4D47 /* SavePlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA541744259836F900CD4D47 /* SavePlaceView.swift */; };
 		BA54174725983CDA00CD4D47 /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA54174625983CDA00CD4D47 /* CheckBox.swift */; };
@@ -32,8 +34,7 @@
 		BA69E42E25BAAF3B007FBFA4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA69E42D25BAAF3B007FBFA4 /* LocationManager.swift */; };
 		BA7AD58225BFDE890051AE64 /* RecentSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7AD58125BFDE890051AE64 /* RecentSearchCell.swift */; };
 		BA7AD58425BFDEC10051AE64 /* ListSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA7AD58325BFDEC10051AE64 /* ListSearchCell.swift */; };
-		BA96BCAD255F979D00178A96 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96BCAC255F979D00178A96 /* SettingController.swift */; };
-		BA96BCAF255F97B700178A96 /* ListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96BCAE255F97B700178A96 /* ListController.swift */; };
+		BA96BCAF255F97B700178A96 /* ListMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96BCAE255F97B700178A96 /* ListMapController.swift */; };
 		BA96BCB1255F99A300178A96 /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96BCB0255F99A300178A96 /* SettingCell.swift */; };
 		BA96BCB52560DE6A00178A96 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA96BCB42560DE6A00178A96 /* SignUpController.swift */; };
 		BA98F8362542779C00384EC7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA98F8352542779C00384EC7 /* Extensions.swift */; };
@@ -79,6 +80,8 @@
 		BA03829025B136AA00D2E213 /* DimmedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DimmedView.swift; sourceTree = "<group>"; };
 		BA2308872595A6F5009D7A91 /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		BA4B94BB25C11C6400C68D81 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		BA4B94BE25C7C28800C68D81 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		BA4B94C025C7CCE100C68D81 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		BA54174225980D7C00CD4D47 /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
 		BA541744259836F900CD4D47 /* SavePlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavePlaceView.swift; sourceTree = "<group>"; };
 		BA54174625983CDA00CD4D47 /* CheckBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
@@ -93,8 +96,7 @@
 		BA69E42D25BAAF3B007FBFA4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BA7AD58125BFDE890051AE64 /* RecentSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchCell.swift; sourceTree = "<group>"; };
 		BA7AD58325BFDEC10051AE64 /* ListSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListSearchCell.swift; sourceTree = "<group>"; };
-		BA96BCAC255F979D00178A96 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
-		BA96BCAE255F97B700178A96 /* ListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListController.swift; sourceTree = "<group>"; };
+		BA96BCAE255F97B700178A96 /* ListMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListMapController.swift; sourceTree = "<group>"; };
 		BA96BCB0255F99A300178A96 /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		BA96BCB42560DE6A00178A96 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		BA96BCB62560EC2E00178A96 /* LocateMe.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocateMe.entitlements; sourceTree = "<group>"; };
@@ -215,7 +217,7 @@
 			children = (
 				BA69E42B25BAADCF007FBFA4 /* MapBaseController.swift */,
 				BAF2245425AA55080070D9EC /* MapController.swift */,
-				BA96BCAE255F97B700178A96 /* ListController.swift */,
+				BA96BCAE255F97B700178A96 /* ListMapController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -306,7 +308,7 @@
 				BABA7A7D2591950200330143 /* MenuController.swift */,
 				BA9F9C1325BE8E93006D33C9 /* EditProfileController.swift */,
 				BA54175725A5742100CD4D47 /* EditListController.swift */,
-				BA96BCAC255F979D00178A96 /* SettingController.swift */,
+				BA4B94C025C7CCE100C68D81 /* SettingController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -330,6 +332,7 @@
 				BA98F8352542779C00384EC7 /* Extensions.swift */,
 				BA54174625983CDA00CD4D47 /* CheckBox.swift */,
 				BABA7A7F2591A02D00330143 /* SlideInTransition.swift */,
+				BA4B94BE25C7C28800C68D81 /* Enums.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				BA9F9C1425BE8E93006D33C9 /* EditProfileController.swift in Sources */,
 				BAF2246325ABFD590070D9EC /* SectionHeaderCell.swift in Sources */,
 				BAF2245F25AA6BE30070D9EC /* SearchController.swift in Sources */,
+				BA4B94BF25C7C28800C68D81 /* Enums.swift in Sources */,
 				BA69E42E25BAAF3B007FBFA4 /* LocationManager.swift in Sources */,
 				BA54174725983CDA00CD4D47 /* CheckBox.swift in Sources */,
 				BAD103602596DF4600F44503 /* SavedController.swift in Sources */,
@@ -537,7 +541,7 @@
 				BAF2246725AC171E0070D9EC /* Search.swift in Sources */,
 				BA54175825A5742100CD4D47 /* EditListController.swift in Sources */,
 				BAF2245125A6C08D0070D9EC /* EditListHeader.swift in Sources */,
-				BA96BCAD255F979D00178A96 /* SettingController.swift in Sources */,
+				BA4B94C125C7CCE100C68D81 /* SettingController.swift in Sources */,
 				BABA7A892594527600330143 /* PlaceDbController.swift in Sources */,
 				BA98F83B2542826300384EC7 /* Place.swift in Sources */,
 				BA69E42725BAAD09007FBFA4 /* IpadFloatingPanel.swift in Sources */,
@@ -545,7 +549,7 @@
 				BA03829125B136AA00D2E213 /* DimmedView.swift in Sources */,
 				BA2308882595A6F5009D7A91 /* ItemCell.swift in Sources */,
 				BABA7A8B2594528800330143 /* User.swift in Sources */,
-				BA96BCAF255F97B700178A96 /* ListController.swift in Sources */,
+				BA96BCAF255F97B700178A96 /* ListMapController.swift in Sources */,
 				BA54175225A00E3000CD4D47 /* ListDetailCell.swift in Sources */,
 				BAF2244F25A651AE0070D9EC /* EditItemCell.swift in Sources */,
 				BA996710256B8BAD001E5C53 /* ManualSignUpController.swift in Sources */,

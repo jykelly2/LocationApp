@@ -26,9 +26,9 @@ public class UserDbController{
     
     func addNewUser(newUser: User, completion:@escaping (String) -> Void){
         guard let user = newUser as User? else {return}
-          var newId = ""
-      
-          //add user to firebase
+        var newId = ""
+        
+        //add user to firebase
         Auth.auth().createUser(withEmail: user.email, password: user.password){ authResult, error in
             if let err = error{
                 print("Error adding user: \(err)")
@@ -36,57 +36,57 @@ public class UserDbController{
                 newId = authResult!.user.uid
                 print(newId)
                 DispatchQueue.main.async {
-                              self.db.collection("users").document(newId).setData([
-                              "username" : user.username,
-                               "email" : user.email,
-                                "password" : user.password,
-                                "imageUrl" : user.imageUrl
-                              ]){ err in
-                              if let err = err{
-                                  print("Error adding user: \(err)")
-                              }else{
-                                completion(newId)
-                                  print("user added with Id: \(newId)")
-                                }
+                    self.db.collection("users").document(newId).setData([
+                        "username" : user.username,
+                        "email" : user.email,
+                        "password" : user.password,
+                        "imageUrl" : user.imageUrl
+                    ]){ err in
+                        if let err = err{
+                            print("Error adding user: \(err)")
+                        }else{
+                            completion(newId)
+                            print("user added with Id: \(newId)")
+                        }
+                    }
                 }
             }
         }
-      }
     }
     
     func updateUsername(userId:String, username: String){
         let ref = self.db.collection("users").document(userId)
-            ref.updateData([
-                "username": username
-            ]){ err in
-                if let err = err{
-                    print("Error updating user: \(err)")
-                }else{
-                    print("updated user with Id: \(ref.documentID)")
-                }
+        ref.updateData([
+            "username": username
+        ]){ err in
+            if let err = err{
+                print("Error updating user: \(err)")
+            }else{
+                print("updated user with Id: \(ref.documentID)")
             }
+        }
     }
     
     func updateUser(userId: String, user: User){
         if let oldUser = Auth.auth().currentUser{
             oldUser.updateEmail(to: user.email) { error in
-            if let err = error {
-             print("Error updating user: \(err)")
-        } else {
-                self.db.collection("users").document(userId).setData([
-                    "username" : user.username,
-                    "email" : user.email,
-                    "password" : user.password,
-                    "imageUrl" : user.imageUrl
-                   ]) { err in
-                       if let err = err {
-                           print("Error writing document: \(err)")
-                       } else {
-                           print("Document successfully written!")
-                       }
-                   }
-           }
-        }
+                if let err = error {
+                    print("Error updating user: \(err)")
+                } else {
+                    self.db.collection("users").document(userId).setData([
+                        "username" : user.username,
+                        "email" : user.email,
+                        "password" : user.password,
+                        "imageUrl" : user.imageUrl
+                    ]) { err in
+                        if let err = err {
+                            print("Error writing document: \(err)")
+                        } else {
+                            print("Document successfully written!")
+                        }
+                    }
+                }
+            }
         }  
     }
     
@@ -121,7 +121,7 @@ public class UserDbController{
             }
         }
     }
-   
+    
     func getCurrentUserId() -> String{
         let id = Auth.auth().currentUser?.uid != nil ? Auth.auth().currentUser!.uid : ""
         return id
@@ -130,7 +130,7 @@ public class UserDbController{
     func signIn(existingUser: User, completion: @escaping (String) -> Void){
         guard let user = existingUser as User? else {return}
         Auth.auth().signIn(withEmail: user.email, password: user.password) { [weak self] authResult, error in
-          guard let strongSelf = self else { return }
+            guard let strongSelf = self else { return }
             if let err = error{
                 print("Error signing in user: \(err)")
             }else{
@@ -143,7 +143,7 @@ public class UserDbController{
         do {
             try Auth.auth().signOut()
         } catch let signOutError as NSError {
-          print ("Error signing out: %@", signOutError)
+            print ("Error signing out: %@", signOutError)
         }
     }
 }

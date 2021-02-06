@@ -15,9 +15,9 @@ class ListSearchCell: UITableViewCell {
     @IBOutlet weak var subTitleLabel: UILabel!
     
     func configure(list:List){
-       iconImageView.image = list.icon
-       iconImageView.tintColor = list.color
-       titleLabel.text = list.title
-       subTitleLabel.text = list.placeIds.count.placeSingularity()
+        iconImageView.image = list.icon
+        iconImageView.tintColor = list.color
+        titleLabel.text = list.title
+        subTitleLabel.text = list.placeIds.count.placeSingularity()
     }
 }

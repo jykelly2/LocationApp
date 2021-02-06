@@ -24,70 +24,76 @@ class EditProfileController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKeyboardWhenTappedAround()
-    
         SubmitBtn.layer.cornerRadius = 10
+        
         setDefaultTitleNavigationBar(navTitle: "Edit Profile", backText: "")
         showNavigationBar(animated: true)
-        
         fieldSetup()
     }
     
     func fieldSetup(){
-         var format = AnimatedFieldFormat()
-         format.titleFont = UIFont(name: "AvenirNext-Regular", size: 16)!
-         format.textFont = UIFont(name: "AvenirNext-Regular", size: 18)!
-         format.alertColor = .red
-         format.alertFieldActive = false
-         format.titleAlwaysVisible = true
+        var titleFontSize: CGFloat = 16.0
+        var textFontSize: CGFloat = 18.0
+        if traitCollection.userInterfaceIdiom == .pad{
+            titleFontSize = 22.0
+            textFontSize = 24.0
+        }
+        
+        var format = AnimatedFieldFormat()
+        format.titleFont = UIFont(name: "AvenirNext-Regular", size: titleFontSize)!
+        format.textFont = UIFont(name: "AvenirNext-Regular", size: textFontSize)!
+        format.alertColor = .red
+        format.alertFieldActive = false
+        format.titleAlwaysVisible = true
         format.highlightColor = .teal
         format.textColor = .darkGray
-         format.alertFont = UIFont(name: "AvenirNext-Regular", size: 16)!
-    
-         EmailField.format = format
-         EmailField.placeholder = "Email"
-         EmailField.dataSource = self
-         EmailField.delegate = self
-         EmailField.type = .email
-         EmailField.text = user?.email
-           
-         UsernameField.format = format
-         UsernameField.placeholder = "Username"
-         UsernameField.dataSource = self
-         UsernameField.delegate = self
-         UsernameField.lowercased = true
-
+        format.alertFont = UIFont(name: "AvenirNext-Regular", size: titleFontSize)!
+        
+        EmailField.format = format
+        EmailField.placeholder = "Email"
+        EmailField.dataSource = self
+        EmailField.delegate = self
+        EmailField.type = .email
+        EmailField.text = user?.email
+        
+        UsernameField.format = format
+        UsernameField.placeholder = "Username"
+        UsernameField.dataSource = self
+        UsernameField.delegate = self
+        UsernameField.lowercased = true
+        
         UsernameField.type =  AnimatedFieldType.none
-         UsernameField.text = user?.username
-     
-         EmailField.isUserInteractionEnabled = !mediaAccount
-   }
+        UsernameField.text = user?.username
+        
+        EmailField.isUserInteractionEnabled = !mediaAccount
+    }
     
-      
-// MARK: - Button Action
+    
+    // MARK: - Button Action
     @IBAction func tappedSubmitBtn(_ sender: UIButton) {
-          if checkIfValid(){
-              if mediaAccount{
-                  if let id = userId, let username = UsernameField.text{
-                      userDbController.updateUsername(userId: id, username: username)
-                  }
-              }else{
-                  if let password = user?.password, let imageUrl = user?.imageUrl, let id = userId, let user = User(username: UsernameField.text!, email: EmailField.text!, password: password , imageUrl: imageUrl){
-                      userDbController.updateUser(userId: id, user: user)
-                  }
-              }
-              self.navigationController?.popViewController(animated: true)
-          }
-      }
-      
-   func checkIfValid() -> Bool{
+        if checkIfValid(){
+            if mediaAccount{
+                if let id = userId, let username = UsernameField.text{
+                    userDbController.updateUsername(userId: id, username: username)
+                }
+            }else{
+                if let password = user?.password, let imageUrl = user?.imageUrl, let id = userId, let user = User(username: UsernameField.text!, email: EmailField.text!, password: password , imageUrl: imageUrl){
+                    userDbController.updateUser(userId: id, user: user)
+                }
+            }
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    func checkIfValid() -> Bool{
         var validated = false
         if EmailField.text != "" && UsernameField.text?.count ?? 0 >= 3 {
-                validated = EmailField.isValid
+            validated = EmailField.isValid
         }
         return validated
     }
 }
-  
+
 // MARK: - Animated Field Functions
 
 extension EditProfileController: AnimatedFieldDelegate {
@@ -98,7 +104,7 @@ extension EditProfileController: AnimatedFieldDelegate {
             }
         }
     }
-
+    
 }
 
 extension EditProfileController: AnimatedFieldDataSource {

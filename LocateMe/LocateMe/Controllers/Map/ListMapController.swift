@@ -11,19 +11,19 @@ import MapKit
 import CoreLocation
 import FloatingPanel
 
-class ListController: MapBaseController{
+class ListMapController: MapBaseController{
     typealias PanelDelegate = FloatingPanelControllerDelegate & UIGestureRecognizerDelegate
-
+    
     lazy var fpcDelegate: PanelDelegate =
-    (traitCollection.userInterfaceIdiom == .pad) ? SearchPanelPadDelegate(mapOwner: nil, fpcType: .list) : SearchPanelPhoneDelegate(mapOwner: nil, listOwner: self)
+        (traitCollection.userInterfaceIdiom == .pad) ? SearchPanelPadDelegate(mapOwner: nil, fpcType: .list) : SearchPanelPhoneDelegate(mapOwner: nil, listOwner: self)
     
     lazy var placeFpcDelegate: PanelDelegate =
-    (traitCollection.userInterfaceIdiom == .pad) ? SearchPanelPadDelegate(mapOwner: nil, fpcType: .place) : SearchPanelPhoneDelegate(mapOwner: nil, listOwner: self)
-
+        (traitCollection.userInterfaceIdiom == .pad) ? SearchPanelPadDelegate(mapOwner: nil, fpcType: .place) : SearchPanelPhoneDelegate(mapOwner: nil, listOwner: self)
+    
     var currentPlace: Place?
     var count = 0
     var mapBottomInset = 0.0
-   
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         hideNavigationBar(animated: animated)
@@ -35,7 +35,7 @@ class ListController: MapBaseController{
                 let distance = self.locationManager.location?.distance(from: destPlacemark.location!)
                 item.distance = Double(distance ?? 0)
             }
-
+            
             myMap.showAnnotations(self.myMap.annotations, animated: true)
             self.mapBottomInset = 280
             count += 1
@@ -47,11 +47,11 @@ class ListController: MapBaseController{
             self.mapBottomInset = 240
         }
         
-        let padding = UIEdgeInsets(top: 50, left: 50, bottom: 280, right: 50)
+        let padding = traitCollection.userInterfaceIdiom == .pad ? UIEdgeInsets(top: 50, left: 425, bottom: 50, right: 50) : UIEdgeInsets(top: 50, left: 50, bottom: 280, right: 50)
         self.myMap.setVisibleMapRect(self.myMap.visibleMapRect, edgePadding: padding, animated: false)
         originalMapRect = self.myMap.visibleMapRect
     }
-  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMapView(fromMap: false)
@@ -62,15 +62,15 @@ class ListController: MapBaseController{
         if currentPlace == nil{
             fpc.delegate = fpcDelegate
             fpc.contentMode = .fitToBounds
-           
+            
             listDetailVC.list = list
             listDetailVC.places = matchingPlaces
             listDetailVC.userId = userId
-              
+            
             fpc.set(contentViewController: listDetailVC)
             fpc.track(scrollView: listDetailVC.tableView)
             setUpFloatingPanel(fpc: fpc, type: FpcType.list)
-               
+            
             setUpDetailView()
         }else{
             getDistanceAndTime(place: currentPlace!)
@@ -79,18 +79,18 @@ class ListController: MapBaseController{
     
     func setUpFloatingPanel(fpc: FloatingPanelController , type: FpcType){
         switch traitCollection.userInterfaceIdiom {
-           case .pad:
-               layoutPanelForPad(fpc: fpc)
-               fpc.panGestureRecognizer.delegateProxy = fpcDelegate
-           default:
-               layoutPanelForPhone(fpc: fpc, type: type)
+        case .pad:
+            layoutPanelForPad(fpc: fpc)
+            fpc.panGestureRecognizer.delegateProxy = fpcDelegate
+        default:
+            layoutPanelForPhone(fpc: fpc, type: type)
         }
     }
-
+    
 }
 
 // MARK: - Place Detail View Setup
-extension ListController: UITableViewDelegate{
+extension ListMapController: UITableViewDelegate{
     func setUpDetailView() {
         listDetailVC.loadViewIfNeeded()
         listDetailVC.tableView.delegate = self
@@ -104,35 +104,35 @@ extension ListController: UITableViewDelegate{
         getDistanceAndTime(place: place)
     }
     
-   func getDistanceAndTime(place: Place){
+    func getDistanceAndTime(place: Place){
         let destPlacemark = MKPlacemark(coordinate: place.coordinate)
-             let soucePlacemark = MKPlacemark(coordinate: self.locationManager.location!.coordinate)
-             let destItem = MKMapItem(placemark: destPlacemark)
-             let sourceItem = MKMapItem(placemark: soucePlacemark)
-             
-             let destinationRequest = MKDirections.Request()
-             destinationRequest.source = sourceItem
-             destinationRequest.destination = destItem
-             destinationRequest.transportType = .automobile
-             destinationRequest.requestsAlternateRoutes = true
-             
-             let directions = MKDirections(request: destinationRequest)
-             directions.calculate { (response, error) in
-                 guard response != nil else {
-                     if error != nil {
-                             print("error\(error)")
-                         }
-                         return
-                     }
-                     guard let route = response?.routes[0] else{return}
-                     let minutes = route.expectedTravelTime / 60
-                     let time = Int(ceil(minutes)).description
-                     place.distance = Double(route.distance)
-                     place.time = time
-               
-                self.fpc.hide(animated: false, completion: {self.fpc.view.isHidden = true})
-               self.setUpPlaceDetail(place: place)
-             }
+        let soucePlacemark = MKPlacemark(coordinate: self.locationManager.location!.coordinate)
+        let destItem = MKMapItem(placemark: destPlacemark)
+        let sourceItem = MKMapItem(placemark: soucePlacemark)
+        
+        let destinationRequest = MKDirections.Request()
+        destinationRequest.source = sourceItem
+        destinationRequest.destination = destItem
+        destinationRequest.transportType = .automobile
+        destinationRequest.requestsAlternateRoutes = true
+        
+        let directions = MKDirections(request: destinationRequest)
+        directions.calculate { (response, error) in
+            guard response != nil else {
+                if error != nil {
+                    print("error\(error)")
+                }
+                return
+            }
+            guard let route = response?.routes[0] else{return}
+            let minutes = route.expectedTravelTime / 60
+            let time = Int(ceil(minutes)).description
+            place.distance = Double(route.distance)
+            place.time = time
+            
+            self.fpc.hide(animated: false, completion: {self.fpc.view.isHidden = true})
+            self.setUpPlaceDetail(place: place)
+        }
     }
     
     func setUpPlaceDetail(place: Place){
@@ -150,24 +150,24 @@ extension ListController: UITableViewDelegate{
         if self.list != nil{
             placeDetailVC.CloseBtn.addTarget(self, action: #selector(removeInfoFpc), for: .touchUpInside)
         }
- 
+        
         animateAnnotation(coordinate: place.coordinate)
     }
     
-   @objc func removeInfoFpc(){
+    @objc func removeInfoFpc(){
         infoFpc.removePanelFromParent(animated: false)
-    
+        
         let placeDetailView = PlaceDetailController()
         placeDetailView.didMove(toParent: nil)
         placeDetailView.view.removeFromSuperview()
-         placeDetailView.removeFromParent()
+        placeDetailView.removeFromParent()
         placeDetailView.dismiss(animated: false)
-    
+        
         fpc.view.isHidden = false
         fpc.show(animated: true)
         self.zoomToOriginal()
     }
-   
+    
 }
 
-   
+
