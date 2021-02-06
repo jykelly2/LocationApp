@@ -38,4 +38,12 @@ LocationApp (Still in progress of development) allows users to search for any pl
 <img src="https://github.com/jykelly2/LocationApp/blob/master/iPadScreenshots/screenshot_1.png" height="700" width="500"alt="Initial view">
 <div>
   
+<div>
+<img src="https://github.com/jykelly2/LocationApp/blob/master/iPadScreenshots/screenshot_2.png" height="700" width="500"alt="Initial view">
+<div>
+  
+ <div>
+<img src="https://github.com/jykelly2/LocationApp/blob/master/iPadScreenshots/screenshot_3.png" height="700" width="500"alt="Initial view">
+<div>
+  
 
