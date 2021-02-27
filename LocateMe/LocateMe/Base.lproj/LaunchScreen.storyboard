@@ -16,13 +16,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="spotfinderlogo" translatesAutoresizingMaskIntoConstraints="NO" id="oeH-Kn-vHT" userLabel="Splash">
-                                <rect key="frame" x="114" y="220" width="186" height="269"/>
+                                <rect key="frame" x="114" y="273.5" width="186" height="268.5"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="oeH-Kn-vHT" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="99f-Jy-t61"/>
-                            <constraint firstItem="oeH-Kn-vHT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" multiplier="5" id="XKS-Ht-ZGF"/>
+                            <constraint firstItem="oeH-Kn-vHT" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" multiplier="0.9" id="XKS-Ht-ZGF"/>
                             <constraint firstItem="oeH-Kn-vHT" firstAttribute="height" secondItem="Ze5-6b-2t3" secondAttribute="height" multiplier="0.3" id="awq-U6-Kii"/>
                             <constraint firstItem="oeH-Kn-vHT" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.45" id="nCp-yy-SOY"/>
                         </constraints>
