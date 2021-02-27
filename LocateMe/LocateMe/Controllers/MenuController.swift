@@ -76,8 +76,9 @@ extension MapController {
                 menuViewController.LoginLbl.text = "Log Out"
                 menuViewController.LoginImg.image = UIImage(systemName: "escape")?.withTintColor(.teal)
                 if user.imageUrl != ""{
-                    let data = NSData(contentsOf: URL(string: user.imageUrl)!)
-                      menuViewController.ProfileImg.image = UIImage(data: data! as Data)
+                    if let data = NSData(contentsOf: URL(string: user.imageUrl)!){
+                      menuViewController.ProfileImg.image = UIImage(data: data as Data)
+                    }
                 }
             }
         }

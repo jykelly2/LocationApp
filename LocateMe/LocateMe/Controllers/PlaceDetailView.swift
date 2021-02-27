@@ -47,7 +47,7 @@ class PlaceDetailController: UIViewController, UITableViewDelegate, UITableViewD
         
         PlaceName.text = place.name
         PlaceIcon.setUpIconImg(img: place.icon, color: place.color, inset: 30.0)
-        Distance.text = place.category + " . " + "200 m"//place.distance.roundToSingleDigit()
+        Distance.text = place.category + " . " + place.distance.roundToSingleDigit()
         
         let direction_string = "Directions\n\(place.time) min"
         let information_string = "\(place.time) min"

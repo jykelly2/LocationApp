@@ -366,6 +366,7 @@ class MapController: MapBaseController {
         default:
             text = "Park"
         }
+        deactivate(searchBar: searchVC.searchBar)
         searchText = text
         searchItems()
     }
