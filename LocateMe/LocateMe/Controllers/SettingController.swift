@@ -49,16 +49,17 @@ class SettingController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0:
-            review()
         case 1:
-            feedback()
+            review()
         case 2:
+            feedback()
+        case 3:
             share()
             
         default:
             print("nothing")
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func share(){
