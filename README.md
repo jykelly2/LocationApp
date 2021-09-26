@@ -1,5 +1,5 @@
 # LocationApp (Individual App)
-LocationApp (Still in progress of development) allows users to search for any places along user's traced path. Core Location tracks and traces user's path on the map which are used in the search. Using Firestore, user's account, saved places, recent searches and place history are saved in the cloud database. User can also manually create an account or sign up with their existing social media account using Facebook login or Google sign in API (Apple sign in will be implemented when app is ready to submit).
+LocationApp allows users to search for any places along user's traced path. Core Location tracks and traces user's path on the map which are used in the search. Using Firestore, user's account, saved places, recent searches and place history are saved in the cloud database. User can also manually create an account or sign up with their existing social media account using Facebook login or Google sign in API (Apple sign in will be implemented when app is ready to submit).
 
 This app is unique in a sense that there is no existing application that has search ability using user's traced path. So far Apple and Google maps have only the ability to search for places along the way from point A to B in the navigation and can only populate places within restricted distance range.
 
